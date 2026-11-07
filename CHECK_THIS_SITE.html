@@ -1,0 +1,5 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BARDO status standalone-2026.11.07.3</title><body style="background:#101717;color:#e2eee7;font:16px/1.7 system-ui;padding:30px"><h1>BARDO — diagnostics</h1><div id="report">Проверка браузера...</div><script>
+const info = ['Build: standalone-2026.11.07.3','Current URL: '+location.href,'JavaScript: OK','Secure context: '+window.isSecureContext,'WebGL API: '+Boolean(window.WebGLRenderingContext),'WebGL2 API: '+Boolean(window.WebGL2RenderingContext)];
+try {const c=document.createElement('canvas'); const gl=c.getContext('webgl2',{failIfMajorPerformanceCaveat:false}) || c.getContext('webgl'); info.push('Actual WebGL context: '+(gl ? 'OK — '+gl.getParameter(gl.VERSION) : 'UNAVAILABLE'));} catch(e) {info.push('WebGL error: '+e.message)}
+document.querySelector('#report').textContent=info.join('\n');document.querySelector('#report').style.whiteSpace='pre-wrap';
+</script><p><a style="color:#aeeacc" href="./">Вернуться к BARDO</a></p></body></html>
