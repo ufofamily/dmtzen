@@ -1,14 +1,38 @@
-# Публикация dmtzen с сохранением исходников
+# BARDO / dmtzen — исправление белого экрана
 
-Данный архив содержит TypeScript-исходники и папку `docs/` с уже готовым сайтом.
+Адрес сайта: https://ufofamily.github.io/dmtzen/
 
-**Вариант без сборки:** загрузите содержимое архива в корень ветки `main`;
-в `Settings → Pages` установите `Deploy from a branch`, ветка `main`, папка `/docs`.
-НЕ выбирайте `/(root)`: там исходный index.html с `/src/app.ts`, который GitHub Pages не компилирует.
+## Быстрый и надёжный способ: статическая версия (ЭТОТ АРХИВ)
 
-**Вариант с автоматической сборкой:** `Settings → Pages` → `GitHub Actions`;
-файл `.github/workflows/pages.yml` выполняет `npm ci`, `npm run build` и публикует `dist`.
-Если `.github/workflows/pages.yml` не загружен, GitHub Actions не запустится.
+1. Распакуйте ZIP на компьютере.
+2. Откройте репозиторий https://github.com/ufofamily/dmtzen
+3. Загрузите в КОРЕНЬ ветки `main` содержимое ZIP, не сам архив и не внешнюю папку:
+   `index.html`, `.nojekyll` и ВСЕ файлы `assets/`.
+   Обязательно замените существующий `index.html`!
+4. Откройте **Settings → Pages → Build and deployment**.
+5. Выберите **Source: Deploy from a branch**, **Branch: main**, **Folder: /(root)** и нажмите Save.
+6. Проверьте страницу https://ufofamily.github.io/dmtzen/ после публикации.
+   Если загружается старый вариант, используйте Ctrl+Shift+R (или приватное окно).
 
-Готовый статический сайт для публикации прямо из корня ветки находится отдельно
-в архиве `BARDO_dmtzen_FIXED_STATIC.zip`.
+ПРИЧИНА: исходный Vite `index.html` содержит `<script type="module" src="/src/app.ts">`.
+GitHub Pages не компилирует TypeScript. Собранная версия вместо этого подключает
+`./assets/index-BcknU8qk.js` и другие готовые файлы.
+
+НЕ выбирайте `GitHub Actions` для этого способа (тогда может публиковаться
+другой артефакт из workflow). Он подходит для исходного проекта, когда workflow
+делает `npm ci && npm run build` и публикует именно папку `dist`.
+
+### Как проверить
+
+На GitHub откройте корневой `index.html`. В нём должны быть ссылки на
+`./assets/index-*.js`, а НЕ `/src/app.ts`.
+
+В DevTools → Network файлы JS и CSS должны загружаться с кодом 200 и иметь
+корректный Content-Type. Если появляется текст `BARDO: ошибка запуска`,
+прочитайте сообщение и ошибки в F12 → Console.
+
+### Ограничения
+
+Это статическая браузерная версия: работает без серверного API. MP4/FFmpeg
+в браузере не экспортируются. Локальный анализ аудио ограничен 64 МиБ /
+20 минутами, для более длинных сетов можно импортировать JSON с признаками.
