@@ -1,10 +1,20 @@
-BARDO DMTZEN — САМОСТОЯТЕЛЬНАЯ СБОРКА
+BARDO — Telegram Mobile Fix (2026-11-07)
 
-1. В https://github.com/ufofamily/dmtzen откройте корень ветки main.
-2. Удалите старые index.html, assets/, docs/, src/ и старые GitHub Actions workflows, если они не нужны.
-3. Загрузите index.html и .nojekyll из этого архива в КОРЕНЬ репозитория.
-4. Settings -> Pages -> Build and deployment: Deploy from a branch; Branch: main; Folder: /(root). Нажмите Save.
-5. Проверьте https://ufofamily.github.io/dmtzen/ и заголовок вкладки: BARDO · DMTZEN · Standalone standalone-2026.11.07.3.
-6. Если экран по-прежнему пустой, откройте https://ufofamily.github.io/dmtzen/?v=standalone-2026.11.07.3 и Chrome DevTools -> Console.
+ИСПРАВЛЕНИЕ:
+- Приложение больше не требует нативный fullscreen в Telegram WebView.
+- Если fullscreen не поддерживается, кнопка открывает визуализацию на всё доступное окно через CSS.
+- Кнопка «✕ Выйти» возвращает обычный интерфейс.
+- При доступном Telegram WebApp SDK вызывается expand() (НЕ requestFullscreen()).
+- Исправление сохраняет один HTML-файл со встроенными JavaScript и CSS.
 
-В этой версии JS, CSS и Web Worker встроены в один index.html. Для рендера 3D требуется WebGL. Локальная запись MP4 в браузере не предусмотрена.
+ПУБЛИКАЦИЯ:
+1. Перейдите в https://github.com/ufofamily/dmtzen
+2. Загрузите index.html, CHECK_THIS_SITE.html, .nojekyll в корень main.
+3. Settings > Pages: Deploy from branch, main, /(root).
+4. Откройте https://ufofamily.github.io/dmtzen/?v=telegram-4
+
+ВАЖНО:
+Если ошибка возникает сразу при запуске бота, ещё ДО загрузки BARDO, проверьте код
+Telegram-бота / платформенного SDK: автоматический requestFullscreen() тоже нужно
+удалить или защищать проверкой поддержки. Этот архив изменяет код самого сайта,
+но не поведение стороннего бота.
