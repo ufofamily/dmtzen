@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "world": "journey",
+  "duration": 1440,
+  "seed": 1337,
+  "transition": 12,
+  "transitionStyle": "auto",
+  "dynamicsMode": "energy",
+  "dynamicsAmount": 0.7,
+  "dynamicsFloor": 0.35,
+  "dynamicsCeiling": 1.5,
+  "dynamicsWindow": 2,
+  "fractal": 0.25,
+  "liquid": 0.2,
+  "tunnelFx": 0.15,
+  "iridescence": 0.3,
+  "symmetry": 8,
+  "quality": "fast",
+  "safeMode": true
+}

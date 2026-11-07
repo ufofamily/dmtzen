@@ -6,8 +6,15 @@
   "scripts": {
     "dev": "vite --configLoader native --host 127.0.0.1 --port 5177",
     "build": "tsc --noEmit && vite build --configLoader native",
-    "preview": "vite preview --configLoader native --host 127.0.0.1 --port 5177"
+    "preview": "vite preview --configLoader native --host 127.0.0.1 --port 5177",
+    "check:pages": "node scripts/verify-pages.mjs"
   },
-  "dependencies": { "three": "0.170.0" },
-  "devDependencies": { "@types/three": "0.170.0", "typescript": "5.9.3", "vite": "6.4.5" }
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.170.0",
+    "typescript": "5.9.3",
+    "vite": "6.4.5"
+  }
 }
