@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="BARDO — 114 procedural audiovisual worlds. Music stays on your device."><title>BARDO — Browser Edition | dmtzen</title>  <script type="module" crossorigin src="./assets/index-BcknU8qk.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/three-DRJEI0DT.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-CRNNfmev.css">
+
+<style>
+#bardo-boot{max-width:680px;margin:15vh auto;padding:30px;font-family:system-ui,Arial,sans-serif;background:#101717;color:#dce5de;border:1px solid #405247;border-radius:10px;line-height:1.7}
+#bardo-boot h1{margin:0 0 12px;font-size:25px;letter-spacing:5px}
+#bardo-boot small{color:#a1b0aa}
+#bardo-diagnostic{display:none;position:fixed;z-index:100000;bottom:12px;left:12px;right:12px;max-height:45vh;overflow:auto;background:#211717;border:1px solid #ba5e55;color:#ffe6e0;padding:14px;border-radius:9px;font:13px/1.6 system-ui,Arial,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 7px 28px #0009}
+</style>
+<script>
+(function(){
+  function diagnostic(message){
+    const el=document.getElementById('bardo-diagnostic');
+    if(!el) return;
+    el.style.display='block';
+    el.textContent='BARDO: ошибка запуска\n'+String(message)+'\n\nОткройте F12 → Console для подробностей. Если вы опубликовали исходники Vite, используйте готовую статическую сборку или настройте GitHub Actions.';
+  }
+  window.addEventListener('error',function(e){
+    if(e.target&&e.target!==window&&(e.target.src||e.target.href))diagnostic('Не загрузился ресурс: '+(e.target.src||e.target.href));
+    else if(e.message)diagnostic(e.message+' ('+(e.filename||'')+':'+(e.lineno||'?')+')');
+  },true);
+  window.addEventListener('unhandledrejection',function(e){diagnostic(e.reason&&e.reason.message||e.reason||'Необработанная ошибка');});
+  window.addEventListener('load',function(){setTimeout(function(){
+    if(document.getElementById('bardo-boot'))diagnostic('Приложение не инициализировалось. Проверьте, что index.html и папка assets находятся в корне опубликованного сайта.');
+  },8500);});
+})();
+</script>
+</head><body>
+<div id="app"><div id="bardo-boot"><h1>B A R D O</h1><p>Загрузка визуального движка…</p><small>Если экран не изменится, появится диагностика. Проверьте, что GitHub Pages публикует собранный сайт, а не TypeScript-исходники.</small></div></div>
+<div id="bardo-diagnostic" role="alert"></div>
+</body></html>
